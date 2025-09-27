@@ -1,0 +1,42 @@
+<div class="row">
+  <!-- Sidebar -->
+  <div class="col-lg-2">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <!-- Dashboard content -->
+  <div class="col-lg-10">
+    <div class="container mt-3">
+      <h2> Dashboard</h2>
+
+      <!-- Summary Cards -->
+      <div class="summary-cards d-flex flex-wrap gap-3 mb-4">
+        <div class="card p-3 text-center" style="background:hsl(268, 59%, 25%);color:white;flex:1;">
+          <h5>Total Income</h5>
+          <p>₹{{ totalIncome }}</p>
+        </div>
+        <div class="card p-3 text-center" style="background:#5c94c2;color:rgb(241, 236, 236);flex:1;">
+          <h5>Total Expense</h5>
+          <p>₹{{ totalExpense }}</p>
+        </div>
+        <div class="card p-3 text-center" style="background:#263357;color:white;flex:1;">
+          <h5>Balance</h5>
+          <p>₹{{ balance }}</p>
+        </div>
+        <div class="card p-3 text-center" style="background:#5e4574;color:white;flex:1;">
+          <h5>Avg Income/Month</h5>
+          <p>₹{{ averageIncome | number:'1.0-0' }}</p>
+        </div>
+        <div class="card p-3 text-center" style="background:#bb7cee;color:white;flex:1;">
+          <h5>Avg Expense/Month</h5>
+          <p>₹{{ averageExpense | number:'1.0-0' }}</p>
+        </div>
+      </div>
+
+      <!-- Pie Chart (Centered) -->
+      <div class="chart-container mb-4 d-flex justify-content-center" style="position:relative; height:350px; width:100%;">
+        <canvas #financeChart style="max-width:500px; width:100%;"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

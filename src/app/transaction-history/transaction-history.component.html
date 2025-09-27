@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-lg-2">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-lg-10">
+        <div class="container text-dark">
+  <h2>📜 Transaction History</h2>
+
+  <div class="mt-4">
+      <form [formGroup]="filterForm" (ngSubmit)="applyFilters()" class="filter-form">
+        <label>Type</label>
+        <select formControlName="type" (change)="applyFilters()">
+          <option value="All">All</option>
+          <option *ngFor="let t of types" [value]="t">{{ t }}</option>
+        </select>
+    
+        <label>Category</label>
+        <select formControlName="category" (change)="applyFilters()">
+          <option value="All">All</option>
+          <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+        </select>
+    
+        <label>Start Date</label>
+        <input type="date" formControlName="startDate" (change)="applyFilters()" />
+    
+        <label>End Date</label>
+        <input type="date" formControlName="endDate" (change)="applyFilters()" />
+    
+        <label>Sort By</label>
+        <select formControlName="sortBy" (change)="applyFilters()">
+          <option value="date">Date</option>
+          <option value="amount">Amount</option>
+        </select>
+    
+        <button type="button" (click)="resetFilters()">Reset Filters</button>
+      </form>
+  </div>
+
+  <table *ngIf="filteredTransactions.length > 0">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of filteredTransactions">
+        <td>{{ t.date }}</td>
+        <td>{{ t.type }}</td>
+        <td>{{ t.category }}</td>
+        <td>₹{{ t.amount }}</td>
+        <td>{{ t.description || '-' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="filteredTransactions.length === 0">
+    No transactions found.
+  </div>
+</div>
+    </div>
+</div>

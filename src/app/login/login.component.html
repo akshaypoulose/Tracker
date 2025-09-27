@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+    <h1 class="title">Expense Tracker Login</h1>
+
+    <!-- Email Input -->
+    <div class="input-box">
+      <input type="text" formControlName="email" placeholder="Email ID" required>
+      <i class="fa-solid fa-at icon"></i>
+      <div class="text-danger" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+        *Invalid email
+      </div>
+    </div>
+
+    <!-- Password Input -->
+    <div class="input-box">
+      <input type="password" formControlName="password" placeholder="Password" required>
+      <i class='bx bxs-lock-alt icon'></i>
+      <div class="text-danger" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+        *Invalid password
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn">Login</button>
+
+    <!-- Link to Register -->
+    <div class="register-link">
+      <p>Don't have an account? <a routerLink='/register'>Register</a></p>
+    </div>
+  </form>
+</div>
